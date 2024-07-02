@@ -1,0 +1,26 @@
+<% include ../layout %>
+<h2>Libros</h2>
+<a href="/libros/nuevo">Añadir Nuevo Libro</a>
+<table>
+  <tr>
+    <th>Título</th>
+    <th>Fecha de Publicación</th>
+    <th>Autor</th>
+    <th>Precio</th>
+    <th>Acciones</th>
+  </tr>
+  <% libros.forEach(libro => { %>
+    <tr>
+      <td><%= libro.titulo %></td>
+      <td><%= libro.fecha_publicacion %></td>
+      <td><%= libro.autor %></td>
+      <td><%= libro.precio %></td>
+      <td>
+        <a href="/libros/editar/<%= libro.id %>">Editar</a>
+        <form action="/libros/eliminar/<%= libro.id %>" method="POST" style="display:inline;">
+          <button type="submit">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+  <% }) %>
+</table>

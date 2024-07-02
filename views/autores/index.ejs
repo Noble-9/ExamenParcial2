@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autores</title>
+</head>
+<body>
+    <h1>Autores</h1>
+    <ul>
+        <% autores.forEach((autor) => { %>
+            <li>
+                <%= autor.nombre %> <%= autor.apellido %>
+                <a href="/autores/editar/<%= autor.id %>">Editar</a>
+                <form action="/autores/eliminar/<%= autor.id %>" method="POST" style="display:inline;">
+                    <button type="submit">Eliminar</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+    <a href="/autores/nuevo">Añadir Nuevo Autor</a>
+    <a href="/">Inicio</a>
+</body>
+</html>

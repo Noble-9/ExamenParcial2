@@ -1,0 +1,18 @@
+<% include ../layout %>
+<h2>Editar Libro</h2>
+<form action="/libros/editar/<%= libro.id %>" method="POST">
+  <label for="titulo">Título:</label>
+  <input type="text" id="titulo" name="titulo" value="<%= libro.titulo %>" required><br>
+  <label for="fecha_publicacion">Fecha de Publicación:</label>
+  <input type="date" id="fecha_publicacion" name="fecha_publicacion" value="<%= libro.fecha_publicacion %>" required><br>
+  <label for="autor_id">Autor:</label>
+  <select id="autor_id" name="autor_id" required>
+    <% autores.forEach(autor => { %>
+      <option value="<%= autor.id %>" <%= libro.autor_id == autor.id ? 'selected' : '' %>><%= autor.nombre %> <%= autor.apellido %></option>
+    <% }) %>
+  </select><br>
+  <label for="precio">Precio:</label>
+  <input type="number" step="0.01" id="precio" name="precio" value="<%= libro.precio %>" required><br>
+  <button type="submit">Actualizar</button>
+</form>
+<a href="/libros">Volver</a>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nuevo Libro</title>
+</head>
+<body>
+    <h1>Añadir Nuevo Libro</h1>
+    <form action="/libros/nuevo" method="POST">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo">
+        <label for="fecha_publicacion">Fecha de Publicación:</label>
+        <input type="date" id="fecha_publicacion" name="fecha_publicacion">
+        <label for="autor_id">Autor:</label>
+        <select id="autor_id" name="autor_id">
+            <% autores.forEach(autor => { %>
+                <option value="<%= autor.id %>"><%= autor.nombre %> <%= autor.apellido %></option>
+            <% }); %>
+        </select>
+        <label for="precio">Precio:</label>
+        <input type="number" step="0.01" id="precio" name="precio">
+        <button type="submit">Añadir</button>
+    </form>
+</body>
+</html>

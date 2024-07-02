@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Libro</title>
+</head>
+<body>
+    <h1>Editar Libro</h1>
+    <form action="/libros/editar/<%= libro.id %>" method="POST">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" value="<%= libro.titulo %>" required><br>
+        
+        <label for="fecha_publicacion">Fecha de Publicación:</label>
+        <input type="date" id="fecha_publicacion" name="fecha_publicacion" value="<%= libro.fecha_publicacion %>" required><br>
+        
+        <label for="autor_id">Autor:</label>
+        <select id="autor_id" name="autor_id" required>
+            <% autores.forEach(function(autor) { %>
+                <option value="<%= autor.id %>" <%= autor.id === libro.autor_id ? 'selected' : '' %>><%= autor.nombre %> <%= autor.apellido %></option>
+            <% }); %>
+        </select><br>
+        
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" step="0.01" value="<%= libro.precio %>" required><br>
+        
+        <button type="submit">Guardar</button>
+    </form>
+    <form action="/libros/eliminar/<%= libro.id %>" method="POST">
+        <button type="submit">Eliminar</button>
+    </form>
+    <a href="/libros">Volver a la lista de libros</a>
+    <a href="/">Inicio</a>
+</body>
+</html>
